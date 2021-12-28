@@ -1,0 +1,59 @@
+class Node:
+    def __init__(self,val) -> None:
+        self.val = val
+        self.right = None
+        self.left = None
+
+
+def insert(root,val) -> Node:
+    if root is None:
+        return Node(val)
+    else:
+        if root.val == val:
+            return root
+        elif val > root.right:
+            root.right = insert(root.right,val)
+        else:
+            root.left = insert(root.left,val)
+    
+    return root
+
+
+def DFT(start_node) -> list:
+    stack = [start_node]
+    vals_order = []
+
+    while stack:
+        curr_node = start_node.pop()
+        vals_order.append(curr_node.val)
+
+        if curr_node.right:
+            stack.append(curr_node.right)
+        
+        if curr_node.left:
+            stack.append(curr_node.left)
+
+    
+    return vals_order
+
+def BST(start_node) -> list:
+    vals_order = []
+    queue = [start_node]
+
+    while queue:
+        curr_node = queue.pop()
+        vals_order.append(curr_node.val)
+
+
+        if curr_node.right:
+            queue.insert(0,curr_node.right)
+        
+
+        if curr_node.left:
+            queue.insert(0,curr_node.left)
+    
+    return vals_order
+    
+        
+
+            
