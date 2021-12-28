@@ -62,4 +62,17 @@ class sllist:
             
             return vals
     
-    
+    def middle_point(self) -> Node:
+        if self.head is None:
+            return None
+
+        fast_pointer = self.head
+        slow_pointer = self.head
+        
+
+        while slow_pointer.next and fast_pointer.next.next:
+            fast_pointer = fast_pointer.next.next
+            slow_pointer = slow_pointer.next
+        
+
+        return slow_pointer
