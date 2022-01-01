@@ -63,7 +63,11 @@ def Smallest(root):
         return Smallest(root.left)
     
 
-
+def Biggest(root):
+    if root.right is None:
+        return root.val
+    else:
+        return Biggest(root.right)
 
 r = Node(50)
 r = insert(r,90)
