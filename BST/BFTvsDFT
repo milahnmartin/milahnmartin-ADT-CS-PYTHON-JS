@@ -11,7 +11,7 @@ def insert(root,val) -> Node:
     else:
         if root.val == val:
             return root
-        elif val > root.right:
+        elif val > root.val:
             root.right = insert(root.right,val)
         else:
             root.left = insert(root.left,val)
@@ -56,4 +56,22 @@ def BST(start_node) -> list:
     
         
 
-            
+def Smallest(root):
+    if root.left is None:
+        return root.val
+    else:
+        return Smallest(root.left)
+    
+
+
+
+r = Node(50)
+r = insert(r,90)
+r = insert(r,10)
+r = insert(r,50)
+r = insert(r,100)
+r = insert(r,2)
+
+
+
+print(Smallest(r))
