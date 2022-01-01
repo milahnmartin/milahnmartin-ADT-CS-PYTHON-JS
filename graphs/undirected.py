@@ -1,9 +1,9 @@
 graph = {
     'a':['b'],
-    'b':['c'],
-    'c':['d'],
+    'b':['a','c'],
+    'c':['b','d'],
     'd':['e'],
-    'e':[]
+    'e':['d']
 }
 
 
@@ -14,7 +14,10 @@ def bft(graph,start)-> None:
         vertex = queue.pop()
         vals.append(vertex)
         for v in graph[vertex]:
-            queue.insert(0,v)
+            if v in vals:
+                continue
+            else:
+                queue.insert(0,v)
     
 
     print(vals)
@@ -26,7 +29,10 @@ def dft(graph,start) -> None:
         vertex = stack.pop()
         vals.append(vertex)
         for v in graph[vertex]:
-            stack.append(v)
+            if v in vals:
+                continue
+            else:
+                stack.append(v)
 
 
     print(vals)
