@@ -61,6 +61,23 @@ class sllist:
                 current_node = current_node.next
             
             return vals
+
+    def reverse_list(self) -> None:
+        if self.head is None:
+            return
+        
+        prev_pointer = None
+        next_pointer = None
+        current_pointer = self.head
+        
+        while current_pointer:
+            next_pointer = current_pointer.next
+            current_pointer.next = prev_pointer
+            prev_pointer = current_pointer
+            current_pointer = next_pointer
+        
+        self.head = prev_pointer
+
     
     def middle_point(self) -> Node:
         if self.head is None:
@@ -76,3 +93,39 @@ class sllist:
         
 
         return slow_pointer
+    
+    def perfect_print(self) -> None:
+        if self.head is None:
+            return
+        
+        curr_vals = []
+        next_vals = []
+
+        curr_node = self.head
+        while curr_node:
+            if curr_node.next is None:
+                curr_vals.append(curr_node.val)
+                next_vals.append(None)
+            else:
+                curr_vals.append(curr_node.val)
+                next_vals.append(curr_node.next.val)
+            
+            curr_node = curr_node.next
+
+
+        for c,n in zip(curr_vals,next_vals):
+            print(f'Curr-Node:{c}, Next-Node:{n}')
+
+
+
+l = sllist()
+
+
+for i in range(1000,5,-3):
+    l.add_tail(i)
+
+
+l.perfect_print()
+print(f'[REVERSED]')
+l.reverse_list()
+l.perfect_print()
