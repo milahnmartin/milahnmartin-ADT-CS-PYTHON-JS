@@ -88,8 +88,8 @@ class sllist:
         
 
         while slow_pointer.next and fast_pointer.next.next:
-            fast_pointer = fast_pointer.next.next
             slow_pointer = slow_pointer.next
+            fast_pointer = fast_pointer.next.next
         
 
         return slow_pointer
@@ -121,11 +121,9 @@ class sllist:
 l = sllist()
 
 
-for i in range(1000,5,-3):
+for i in range(501):
     l.add_tail(i)
 
 
 l.perfect_print()
-print(f'[REVERSED]')
-l.reverse_list()
-l.perfect_print()
+print(l.middle_point().val)
